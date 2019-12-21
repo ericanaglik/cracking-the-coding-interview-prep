@@ -1,7 +1,8 @@
-/* 1.1: Is Unique - Implement an algorithm to determine if a 
+/***********************************************************
+1.1: Is Unique - Implement an algorithm to determine if a 
 string has all unique characters. What if you cannot use 
-additional data structures?*/
-
+additional data structures?
+***********************************************************/
 
 function isUnique(s) {
     let characters = new Set()
@@ -26,8 +27,10 @@ console.log("Problem 1.1 Is Unique")
 console.log(isUnique('abca'))
 console.log(isUnique('kevin'))
 
-/* 1.2: Check Permutation - Given two strings, write a method
-to decide if one is a permutation of the other. */
+/***********************************************************
+1.2: Check Permutation - Given two strings, write a method
+to decide if one is a permutation of the other. 
+***********************************************************/
 
 function checkPermutation(s1,s2) {
     // Base case
@@ -64,3 +67,20 @@ console.log(checkPermutation("abc","cab"))
 console.log(checkPermutation("kevin","erica"))
 console.log(checkPermutation("erica","erika"))
 
+/***********************************************************
+1.3: URLify - Write a method to replace all spaces in a
+string with '%20'. You may assume that the string has
+sufficient space at the end to hold the additional characters,
+and that you are given the "true" length of the string.
+***********************************************************/
+
+function urlify(s) {
+    /*split the string on the spaces then join them together
+    with '%20' */
+    return s.split(' ').join('%20');
+}
+
+// Tests 
+console.log("Problem 1.3 URLify")
+console.log(urlify('Mr John Smith'))
+console.log(urlify('Hello World'))
