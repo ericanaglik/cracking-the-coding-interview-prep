@@ -24,8 +24,8 @@ function isUnique(s) {
 
 // Tests 
 console.log("Problem 1.1 Is Unique")
-console.log(isUnique('abca'))
-console.log(isUnique('kevin'))
+console.log(isUnique('abca')) // -> returns false
+console.log(isUnique('kevin')) // -> returns true 
 
 /***********************************************************
 1.2: Check Permutation - Given two strings, write a method
@@ -63,9 +63,9 @@ function checkPermutation(s1,s2) {
 
 // Tests 
 console.log("Problem 1.2 Check Permutation")
-console.log(checkPermutation("abc","cab"))
-console.log(checkPermutation("kevin","dog"))
-console.log(checkPermutation("erica","erika"))
+console.log(checkPermutation("abc","cab")) // -> returns true
+console.log(checkPermutation("kevin","dog")) // -> returns false
+console.log(checkPermutation("erica","erika")) // - returns false
 
 /***********************************************************
 1.3: URLify - Write a method to replace all spaces in a
@@ -82,8 +82,8 @@ function urlify(s) {
 
 // Tests 
 console.log("Problem 1.3 URLify")
-console.log(urlify('Mr John Smith'))
-console.log(urlify('Hello World'))
+console.log(urlify('Mr John Smith')) // -> returns 'Mr%20John%20Smith
+console.log(urlify('Hello World')) // -> returns 'Hello%20World'
 
 /***********************************************************
 1.4: Palindrome Permutation - Given a string, write a 
