@@ -4,6 +4,11 @@ string has all unique characters. What if you cannot use
 additional data structures?
 ***********************************************************/
 
+/******************** BIG O NOTATION ***********************
+Sets are constant time (O(1)) look up and insertion
+Iterate through the string once which is O(n)
+***********************************************************/
+
 function isUnique(s) {
     let characters = new Set()
     // iterate through the string
@@ -64,6 +69,11 @@ function checkPermutation(s1,s2) {
 
 /************** NEW SOLUTION, edge case passes ************/
 
+/******************** BIG O NOTATION ***********************
+Each stringToDict() is O(n) (explanation below),
+so checkPermutation() is O(s1 + s2) which is O(n)
+***********************************************************/
+
 function checkPermutation(s1,s2) {
     // Base case
     if(s1.length != s2.length) {
@@ -83,6 +93,10 @@ function deepEqual(x, y) {
         ok(x).every(key => deepEqual(x[key], y[key]))
     ) : (x === y);
 }
+
+/******************** BIG O NOTATION ***********************
+stringToDict() is O(n) because you iterate through the string
+***********************************************************/
 
 function stringToDict(s) {
     let dict = new Object()
@@ -115,6 +129,11 @@ sufficient space at the end to hold the additional characters,
 and that you are given the "true" length of the string.
 ***********************************************************/
 
+/******************** BIG O NOTATION ***********************
+both split() and join() are O(n) because they need to
+iterate through the string, therefore urlify() is also O(n)
+***********************************************************/
+
 function urlify(s) {
     /*split the string on the spaces then join them together
     with '%20' */
@@ -137,6 +156,15 @@ words.
 EXAMPLE: 
 Input: Tact Coa
 Output: True (permutations: "taco cat", "atco cta", etc.)
+***********************************************************/
+
+/******************** BIG O NOTATION ***********************
+the for loop is O(unique(n)) because only unique letters are
+stored in the dictionary
+
+split(), join(), and stringToDict() are all o(n) because
+they need to iterate through the string, therefore,
+palindromePermutation() is O(n)
 ***********************************************************/
 
 function palindromePermutation(s) {
