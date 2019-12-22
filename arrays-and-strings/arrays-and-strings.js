@@ -7,9 +7,9 @@ additional data structures?
 function isUnique(s) {
     let characters = new Set()
     // iterate through the string
-    for(var i = 0; i < s.length; i++) {
+    for(let i = 0; i < s.length; i++) {
         // grab the current character
-        var c = s.charAt(i)
+        let c = s.charAt(i)
         /* if the character is already in the set (not unique)
         return false */
         if(characters.has(c)) {
@@ -42,16 +42,16 @@ function checkPermutation(s1,s2) {
     let characters = new Set()
     // iterate through the first string, adding each character
     to the set 
-    for(var i = 0; i < s1.length; i++) {
+    for(let i = 0; i < s1.length; i++) {
         // grab the current character
-        var c = s1.charAt(i)
+        let c = s1.charAt(i)
         // add it to the set
         characters.add(c)
     }
     // iterate through the second string
-    for(var i = 0; i < s2.length; i++) {
+    for(let i = 0; i < s2.length; i++) {
         // grab the current character
-        var c2 = s2.charAt(i)
+        let c2 = s2.charAt(i)
         // if the character isn't in the first set, its not
         a permutation, so return false
         if(characters.has(c2) === false) {
@@ -87,9 +87,9 @@ function deepEqual(x, y) {
 function stringToDict(s) {
     let dict = new Object()
     // iterates through the string
-    for(var i = 0; i < s.length; i++) {
+    for(let i = 0; i < s.length; i++) {
         // grabs the current character
-        var c = s.charAt(i)
+        let c = s.charAt(i)
         /* if its not in the dictionary, add it and set its 
         value to 0 */
         if(c in dict === false){
@@ -138,6 +138,45 @@ EXAMPLE:
 Input: Tact Coa
 Output: True (permutations: "taco cat", "atco cta", etc.)
 ***********************************************************/
+
+function palindromePermutation(s) {
+    s = s.split(' ').join('').toLowerCase()
+    // Base cases
+    /* a string is a palindrome if its an empty string or a
+    single character */
+    if(s.length < 2){
+        return true
+    }
+    // a palindrome has to be odd, returns false if its even
+    if(s.length % 2 === 0){
+        return false
+    }
+
+    // calls upon helper function from line 87 above
+    dict = stringToDict(s)
+    
+    let numOdds = 0
+    for(key in dict){
+        let value = dict[key]
+        if(value % 2 != 0){
+            numOdds++
+        }
+    }
+    if(numOdds != 1){
+        return false
+    }
+    return true
+}
+
+// Tests
+console.log("Problem 1.4 Palindrome Permutation")
+console.log(palindromePermutation("Tact Coa")) // -> returns true
+console.log(palindromePermutation("baa")) // -> returns true
+console.log(palindromePermutation("")) // -> returns true
+console.log(palindromePermutation("a")) // -> returns true 
+console.log(palindromePermutation("ab")) // -> returns false
+console.log(palindromePermutation("Send help")) // -> returns false
+
 
 /***********************************************************
 1.5: One Away - There are three types of edits that can be
