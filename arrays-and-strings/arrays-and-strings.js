@@ -38,34 +38,38 @@ function checkPermutation(s1,s2) {
         return false
     }
 
-    let characters = new Set()
-    /* iterate through the first string, adding each character
-    to the set */
-    for(var i = 0; i < s1.length; i++) {
-        // grab the current character
-        var c = s1.charAt(i)
-        // add it to the set
-        characters.add(c)
+    return deepEqual(stringToDict(s1), stringToDict(s2))
+}
+
+function deepEqual(x, y) {
+    const ok = Object.keys, tx = typeof x, ty = typeof y;
+    return x && y && tx === 'object' && tx === ty ? (
+        ok(x).length === ok(y).length &&
+        ok(x).every(key => deepEqual(x[key], y[key]))
+    ) : (x === y);
+}
+
+function stringToDict(s) {
+    let dict = new Object()
+    
+    for(var i = 0; i < s.length; i++) {
+        
+        var c = s.charAt(i)
+        
+        if(c in dict === false){
+            dict[c] = 0
+        } 
+        dict[c]++
     }
-    // iterate through the second string
-    for(var i = 0; i < s2.length; i++) {
-        // grab the current character
-        var c2 = s2.charAt(i)
-        /* if the character isn't in the first set, its not
-        a permutation, so return false */
-        if(characters.has(c2) === false) {
-            return false
-        }
-    }
-    // if nothing failed, its a permutation
-    return true
+    return dict
 }
 
 // Tests 
 console.log("Problem 1.2 Check Permutation")
-console.log(checkPermutation("abc","cab")) // -> returns true
+console.log(checkPermutation("abc", "cab")) // -> returns true
 console.log(checkPermutation("kevin","dog")) // -> returns false
-console.log(checkPermutation("erica","erika")) // - returns false
+console.log(checkPermutation("erica","erika")) // -> returns false
+console.log(checkPermutation("aabb", "aaab")) // -> returns false
 
 /***********************************************************
 1.3: URLify - Write a method to replace all spaces in a
@@ -82,7 +86,7 @@ function urlify(s) {
 
 // Tests 
 console.log("Problem 1.3 URLify")
-console.log(urlify('Mr John Smith')) // -> returns 'Mr%20John%20Smith
+console.log(urlify('Mr John Smith')) // -> returns 'Mr%20John%20Smith'
 console.log(urlify('Hello World')) // -> returns 'Hello%20World'
 
 /***********************************************************
