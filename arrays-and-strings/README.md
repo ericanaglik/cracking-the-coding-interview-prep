@@ -45,7 +45,9 @@ which turns an array into a string.
 
 ## Different types of For Loops in Javascript
 
-- The classic for loop best used to iterate over the length of something
+### The Classic Loop
+
+Best used to iterate over the length of something
 
 ``` javascript
 for (let i = 0; i < s.length; i++)
@@ -53,7 +55,9 @@ for (let i = 0; i < s.length; i++)
 
 > From 1.1: isUnique()
 
-- The for loop that is great for looping over the keys and values of an object
+### The Keys Loop
+
+Loop that is great for looping over the keys and values of an object
 
 ``` javascript
 for (key in dict)
@@ -61,7 +65,9 @@ for (key in dict)
 
 > From 1.4: palindromePermutation()
 
-- The for loop that is the equivalent to **enumerate()** in Python, that is best used when you want to use both the index and the value at that index
+### The Enumerate Loop
+
+The equivalent to **enumerate()** in Python, that is best used when you want to use both the index and the value at that index
 
 ``` javascript
 for(let [rowIndex, row] of matrix.entries())
@@ -69,7 +75,9 @@ for(let [rowIndex, row] of matrix.entries())
 
 > From 1.8: zeroMatrix()
 
-- The for each loop that allows you to call a function on each element of your iterable
+### The ForEach Loop
+
+Allows you to call a function on each element of your iterable
 
 ``` javascript
 rowsSet.forEach(myFunction)
@@ -77,15 +85,11 @@ rowsSet.forEach(myFunction)
 
 > From 1.8: zeroMatrix()
 
-- The for each loop that allows you to call a function on each element of your iterable
-
-``` javascript
-rowsSet.forEach(myFunction)
-```
-
 ## Different Ways to Write a Function
 
-- The default function, used for making main functions with good readability and comments
+### The Default Function
+
+Used for making main functions with good readability and comments
 
 ``` javascript
 function functionName(parameters){
@@ -93,7 +97,9 @@ function functionName(parameters){
 
 > From all challenges
 
-- The fat arrow function, used for very small functions that you want to establish inline
+### The Fat Arrow Function
+
+Used for very small functions that you want to establish inline
 
 ``` javascript
 parameters => {
