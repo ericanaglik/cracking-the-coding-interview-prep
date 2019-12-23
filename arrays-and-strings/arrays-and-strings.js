@@ -10,21 +10,21 @@ Iterate through the string once which is O(n)
 ***********************************************************/
 
 function isUnique(s) {
-    let characters = new Set()
-    // iterate through the string
-    for(let i = 0; i < s.length; i++) {
-        // grab the current character
-        let c = s.charAt(i)
-        /* if the character is already in the set (not unique)
-        return false */
-        if(characters.has(c)) {
-            return false
-        }
-        // add the current character to the set
-        characters.add(c)
+  let characters = new Set()
+  // iterate through the string
+  for (let i = 0; i < s.length; i++) {
+    // grab the current character
+    let c = s.charAt(i)
+    /* if the character is already in the set (not unique)
+    return false */
+    if (characters.has(c)) {
+      return false
     }
-    // if nothing failed, the string is unique
-    return true
+    // add the current character to the set
+    characters.add(c)
+  }
+  // if nothing failed, the string is unique
+  return true
 }
 
 // Tests 
@@ -74,24 +74,26 @@ Each stringToDict() is O(n) (explanation below),
 so checkPermutation() is O(s1 + s2) which is O(n)
 ***********************************************************/
 
-function checkPermutation(s1,s2) {
-    // Base case
-    if(s1.length != s2.length) {
-        return false
-    }
-    // returns true if its a permutation, false if not
-    return deepEqual(stringToDict(s1), stringToDict(s2))
+function checkPermutation(s1, s2) {
+  // Base case
+  if (s1.length != s2.length) {
+    return false
+  }
+  // returns true if its a permutation, false if not
+  return deepEqual(stringToDict(s1), stringToDict(s2))
 }
 
 /* Helper function that compares the keys and values of two 
 objects in javascript. Credit to:
 https://stackoverflow.com/questions/33232823/how-to-compare-two-objects-and-get-key-value-pairs-of-their-differences */
 function deepEqual(x, y) {
-    const ok = Object.keys, tx = typeof x, ty = typeof y;
-    return x && y && tx === 'object' && tx === ty ? (
-        ok(x).length === ok(y).length &&
-        ok(x).every(key => deepEqual(x[key], y[key]))
-    ) : (x === y);
+  const ok = Object.keys,
+    tx = typeof x,
+    ty = typeof y;
+  return x && y && tx === 'object' && tx === ty ? (
+    ok(x).length === ok(y).length &&
+    ok(x).every(key => deepEqual(x[key], y[key]))
+  ) : (x === y);
 }
 
 /******************** BIG O NOTATION ***********************
@@ -99,27 +101,27 @@ stringToDict() is O(n) because you iterate through the string
 ***********************************************************/
 
 function stringToDict(s) {
-    let dict = new Object()
-    // iterates through the string
-    for(let i = 0; i < s.length; i++) {
-        // grabs the current character
-        let c = s.charAt(i)
-        /* if its not in the dictionary, add it and set its 
-        value to 0 */
-        if(c in dict === false){
-            dict[c] = 0
-        }
-        // add another occurrence to the key's value
-        dict[c]++
+  let dict = new Object()
+  // iterates through the string
+  for (let i = 0; i < s.length; i++) {
+    // grabs the current character
+    let c = s.charAt(i)
+    /* if its not in the dictionary, add it and set its 
+    value to 0 */
+    if (c in dict === false) {
+      dict[c] = 0
     }
-    return dict
+    // add another occurrence to the key's value
+    dict[c]++
+  }
+  return dict
 }
 
 // Tests 
 console.log("Problem 1.2 Check Permutation")
 console.log(checkPermutation("abc", "cab")) // -> returns true
-console.log(checkPermutation("kevin","dog")) // -> returns false
-console.log(checkPermutation("erica","erika")) // -> returns false
+console.log(checkPermutation("kevin", "dog")) // -> returns false
+console.log(checkPermutation("erica", "erika")) // -> returns false
 console.log(checkPermutation("aabb", "aaab")) // -> returns false
 
 /***********************************************************
@@ -135,9 +137,9 @@ iterate through the string, therefore urlify() is also O(n)
 ***********************************************************/
 
 function urlify(s) {
-    /*split the string on the spaces then join them together
-    with '%20' */
-    return s.split(' ').join('%20');
+  /*split the string on the spaces then join them together
+  with '%20' */
+  return s.split(' ').join('%20');
 }
 
 // Tests 
@@ -168,32 +170,32 @@ palindromePermutation() is O(n)
 ***********************************************************/
 
 function palindromePermutation(s) {
-    s = s.split(' ').join('').toLowerCase()
-    // Base cases
-    /* a string is a palindrome if its an empty string or a
-    single character */
-    if(s.length < 2){
-        return true
-    }
-    // a palindrome has to be odd, returns false if its even
-    if(s.length % 2 === 0){
-        return false
-    }
-
-    // calls upon helper function from line 87 above
-    dict = stringToDict(s)
-    
-    let numOdds = 0
-    for(key in dict){
-        let value = dict[key]
-        if(value % 2 != 0){
-            numOdds++
-        }
-    }
-    if(numOdds != 1){
-        return false
-    }
+  s = s.split(' ').join('').toLowerCase()
+  // Base cases
+  /* a string is a palindrome if its an empty string or a
+  single character */
+  if (s.length < 2) {
     return true
+  }
+  // a palindrome has to be odd, returns false if its even
+  if (s.length % 2 === 0) {
+    return false
+  }
+
+  // calls upon helper function from line 87 above
+  dict = stringToDict(s)
+
+  let numOdds = 0
+  for (key in dict) {
+    let value = dict[key]
+    if (value % 2 != 0) {
+      numOdds++
+    }
+  }
+  if (numOdds != 1) {
+    return false
+  }
+  return true
 }
 
 // Tests
@@ -219,23 +221,23 @@ pale, bale -> true
 pale, bake -> false
 ***********************************************************/
 
-function oneAway(s1,s2){
-    // Base Case
-    /* If the length of the strings are more than one apart,
-    they are automatically not one away, therefore return
-    false */
-    if(Math.abs(s1.length - s2.length) > 1) {
-        return false
-    }
-    return true
+function oneAway(s1, s2) {
+  // Base Case
+  /* If the length of the strings are more than one apart,
+  they are automatically not one away, therefore return
+  false */
+  if (Math.abs(s1.length - s2.length) > 1) {
+    return false
+  }
+  return true
 }
 
 // Tests 
 console.log("Problem 1.5 One Away")
-console.log(oneAway("pales","pale")) // -> returns true
-console.log(oneAway("kevin","dog")) // -> returns false
-console.log(oneAway("pale","bale")) // -> returns true
-console.log(oneAway("pale","bake")) // -> returns false
+console.log(oneAway("pales", "pale")) // -> returns true
+console.log(oneAway("kevin", "dog")) // -> returns false
+console.log(oneAway("pale", "bale")) // -> returns true
+console.log(oneAway("pale", "bake")) // -> returns false
 
 
 /***********************************************************
@@ -255,52 +257,52 @@ O(n) where n is the length of the string.
 ***********************************************************/
 
 function stringCompression(s) {
-    // Base Case
-    /* If the length is 0, it returns the empty string (cant
-    be compressed). If the length is 1, the compression
-    look like ex: a1, which is longer than the single
-    character. If the length is 2, then the compressed
-    version would be the same length as the original string.
-    Therefore, return the original string in all these cases
-    */
-    if(s.length < 3){
-        return s
-    }
-    // The compressed string we are making
-    let compressed = ""
-    // The current consecutive letter, starting at the first
-    let consecLetter = s.charAt(0)
-    // The count of the current letter (consecutively)
-    let consecCount = 0
+  // Base Case
+  /* If the length is 0, it returns the empty string (cant
+  be compressed). If the length is 1, the compression
+  look like ex: a1, which is longer than the single
+  character. If the length is 2, then the compressed
+  version would be the same length as the original string.
+  Therefore, return the original string in all these cases
+  */
+  if (s.length < 3) {
+    return s
+  }
+  // The compressed string we are making
+  let compressed = ""
+  // The current consecutive letter, starting at the first
+  let consecLetter = s.charAt(0)
+  // The count of the current letter (consecutively)
+  let consecCount = 0
 
-    for(let i = 0; i < s.length; i++){
-        let currLetter = s.charAt(i)
-        /* If the current letter is the same as the
-        consecLetter, add one to its count*/
-        if(currLetter === consecLetter){
-            consecCount++
-        } else {
-            // add the letter and count to the string
-            compressed += consecLetter + consecCount.toString()
-            // reset consecLetter to be the current (different) letter
-            consecLetter = currLetter
-            /* reset the consecutive count to 1 because the 
-            letter just appeared */
-            consecCount = 1
-        }
+  for (let i = 0; i < s.length; i++) {
+    let currLetter = s.charAt(i)
+    /* If the current letter is the same as the
+    consecLetter, add one to its count*/
+    if (currLetter === consecLetter) {
+      consecCount++
+    } else {
+      // add the letter and count to the string
+      compressed += consecLetter + consecCount.toString()
+      // reset consecLetter to be the current (different) letter
+      consecLetter = currLetter
+      /* reset the consecutive count to 1 because the 
+      letter just appeared */
+      consecCount = 1
     }
-    // Add the remaining letter and count
-    compressed += consecLetter + consecCount.toString()
+  }
+  // Add the remaining letter and count
+  compressed += consecLetter + consecCount.toString()
 
-    /* Check to see if the compressed length is larger than
-    the original string's length, if it is, return the
-    original string */
-    if(compressed.length > s.length){
-        return s
-    }
-    /* If all the base cases fail meaning the compressed is
-    actually shorter than the original, return compressed */
-    return compressed
+  /* Check to see if the compressed length is larger than
+  the original string's length, if it is, return the
+  original string */
+  if (compressed.length > s.length) {
+    return s
+  }
+  /* If all the base cases fail meaning the compressed is
+  actually shorter than the original, return compressed */
+  return compressed
 }
 
 // Tests
@@ -332,5 +334,3 @@ two strings, s1 and s2, write code to check if s2 is a
 rotation of s1 using only one call to isSubstring 
 (e.g., "waterbottle" is a rotation of "erbottlewat").
 ***********************************************************/
-
-

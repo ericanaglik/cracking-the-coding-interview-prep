@@ -1,4 +1,4 @@
-import LinkedList from './linked-list'
+const LinkedList = require('./linked-list')
 /***********************************************************
 2.1: Remove Dups - Write code to remove duplicates from an
 unsorted linked list.
@@ -10,6 +10,16 @@ buffer is not allowed?
 /******************** BIG O NOTATION ***********************
 
 ***********************************************************/
+
+function removeDups(ll){
+
+}
+
+// Tests
+let linkedList1 = new LinkedList(1,2,1,1,3)
+console.log("Problem 2.1 Remove Dups")
+console.log(removeDups(linkedList1))
+
 
 /***********************************************************
 2.2: Return Kth to Last - Implement an algorithm to find the
