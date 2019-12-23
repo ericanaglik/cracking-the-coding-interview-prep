@@ -327,6 +327,12 @@ element in an MxN matrix is 0, its entire row and column are
 set to 0.
 ***********************************************************/
 
+/******************** BIG O NOTATION ***********************
+zeroMatrix() is O(m*n) where m is the number of rows and n
+is the number of columns. If the matrix is a square (all
+rows and columns the same size) then zeroMatrix() is O(n^2)
+***********************************************************/
+
 function zeroMatrix(matrix){
   // Base Case
   /* If there are no rows and columns, return the original
