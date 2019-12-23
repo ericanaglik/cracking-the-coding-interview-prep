@@ -2,7 +2,7 @@ class LinkedList {
   constructor(...values) {
     this.head = null
     this.length = 0
-    values.forEach(value => this.add(value))
+    values.reverse().forEach(value => this.add(value))
   }
   add(value) {
     const newNode = {
