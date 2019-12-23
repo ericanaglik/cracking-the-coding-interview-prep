@@ -66,6 +66,16 @@ like a->b->d->e->f
 /******************** BIG O NOTATION ***********************
 
 ***********************************************************/
+function deleteMiddleNode(node){
+  node.value = node.next.value
+  node.next = node.next.next
+}
+
+// Tests
+let testDeleteMiddleNode = new LinkedList(1,2,1,1,3,4,5,6)
+let nodeToDelete = testDeleteMiddleNode.find(3)
+// Do later, need to improve linked list class
+console.log("Problem 2.3 Delete Middle Node")
 
 /***********************************************************
 2.4: Partition - Write code to partition a linked list
