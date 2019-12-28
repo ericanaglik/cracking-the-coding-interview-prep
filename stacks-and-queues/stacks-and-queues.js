@@ -47,6 +47,40 @@ operation on a specific sub-stack.
 
 ***********************************************************/
 
+class setOfStacks{
+  constructor(max_size){
+    this.current_stack = new Array()
+    this.max_size = max_size
+    this.stacks = new Array()
+  }
+
+  is_full(stack){
+    return (stack.length >= this.max_size)
+  }
+
+  is_empty(stack){
+    return (stack.length === 0)
+  }
+  
+  push(data) {
+    if (this.is_full(this.current_stack)){
+      this.stacks.push(this.current_stack)
+      this.current_stack = null
+    }
+    if (this.current_stack === null){
+      this.current_stack = new Array()
+    }
+    this.current_stack.push(data)
+  }
+
+  pop(data) {
+    if(this.is_empty(this.current_stack)){
+      this.current_stack = this.stacks.pop()
+    }
+    return this.current_stack.pop()
+  }
+}
+
 /***********************************************************
 3.4: Queue via Stacks - Implement a myQueue class which
 implements a queue using two stacks.

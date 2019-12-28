@@ -95,9 +95,35 @@ having a boy or a girl on any given pregnancy is equal.)
 Solve this out logically and then write a computer
 simulation of it.
 ***********************************************************/
-
+function apocalypseSimulation(){
+  /*
+  we want to know how many boys on average we will have 
+  before getting a girl, we can do this by continuously 
+  rolling a random number between 0 and 1, if its greater 
+  than .5 we stop rolling and move to the next iteration
+  Each roll will add 1 to a boys variable, and number
+  of iterations ran will be the girls variable. Taking the 
+  ratio of these 2 things will be the answer.
+  */
+  boys = 0
+  girls = 10000000
+  for(i = 0; i < girls; i++){
+    let next = false
+    while(next === false){
+      child = Math.floor(Math.random() * 101)
+      if(child <= 50){
+        boys += 1
+      } else {
+        next = true
+      }
+    }
+  }
+  
+  return(boys/girls)
+}
+console.log(apocalypseSimulation())
 /********************** MY SOLUTION ************************
-
+The simulation yields 1.02
 ***********************************************************/
 
 /***********************************************************
