@@ -8,8 +8,8 @@ array to implement three stacks.
 I would have three markers that mark where each stack ends.
 If I wanted to add something to a stack I would insert the
 item before the ending marker for that stack. Then I would
-increment all the markers to the right of the item I 
-inserted. If I wanted to remove something from the stack I
+increment a4ll the markers to the right of the item I 
+nserted. If I wanted to remove something from the stack I
 would find the marker that ends the stack and then pop the 
 item from the left of the marker and then decrement every
 marker to the right.
@@ -102,6 +102,49 @@ isEmpty.
 /******************** BIG O NOTATION ***********************
 
 ***********************************************************/
+let stack = new Array()
+unsortedStack = [1]
+lastPopped = 2
+// is lastPopped smaller than smallest
+// if so smallest = lastPopped
+// if not then lastPopped goes to secondStack
+smallest = 2
+// num_sorted increments once one stack gets emptied
+num_sorted = 1
+// we only empty until num_sorted items are left, then restart
+// until sorted!
+secondStack = [4, 5, 3]
+let stack_2 = new Array()
+function sortStack(firstStack) {
+  let secondStack = new Array()
+  let length = firstStack.length()
+  let lastPopped = 0
+  let numSorted = 0
+  // first while loop is for checking when the entire stack
+  // is sorted, and increments numSorted
+  while (numSorted != length) {
+    // second while loop handles moving items from FirstStack
+    // to SecondStack
+    while (numSorted > firstStack.length()) {
+      
+      if(smallest === null) {
+        smallest = firstStack.pop()
+      } else if (firstStack.peek() < smallest) {
+        secondStack.push(smallest)
+        smallest = firstStack.pop()
+      } else {
+        secondStack.push(firstStack.pop())
+      }
+
+      
+    }
+  }
+
+
+
+
+}
+
 
 /***********************************************************
 3.6: Animal Shelter - An animal shelter, which holds only
