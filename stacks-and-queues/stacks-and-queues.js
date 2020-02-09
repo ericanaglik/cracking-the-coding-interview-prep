@@ -9,7 +9,7 @@ I would have three markers that mark where each stack ends.
 If I wanted to add something to a stack I would insert the
 item before the ending marker for that stack. Then I would
 increment a4ll the markers to the right of the item I 
-nserted. If I wanted to remove something from the stack I
+inserted. If I wanted to remove something from the stack I
 would find the marker that ends the stack and then pop the 
 item from the left of the marker and then decrement every
 marker to the right.
@@ -47,34 +47,34 @@ operation on a specific sub-stack.
 
 ***********************************************************/
 
-class setOfStacks{
-  constructor(max_size){
+class setOfStacks {
+  constructor(max_size) {
     this.current_stack = new Array()
     this.max_size = max_size
     this.stacks = new Array()
   }
 
-  is_full(stack){
+  is_full(stack) {
     return (stack.length >= this.max_size)
   }
 
-  is_empty(stack){
+  is_empty(stack) {
     return (stack.length === 0)
   }
-  
+
   push(data) {
-    if (this.is_full(this.current_stack)){
+    if (this.is_full(this.current_stack)) {
       this.stacks.push(this.current_stack)
       this.current_stack = null
     }
-    if (this.current_stack === null){
+    if (this.current_stack === null) {
       this.current_stack = new Array()
     }
     this.current_stack.push(data)
   }
 
   pop(data) {
-    if(this.is_empty(this.current_stack)){
+    if (this.is_empty(this.current_stack)) {
       this.current_stack = this.stacks.pop()
     }
     return this.current_stack.pop()
@@ -100,51 +100,57 @@ isEmpty.
 ***********************************************************/
 
 /******************** BIG O NOTATION ***********************
+O(n^2) because every item in the stack needs to move for
+each item to get put in sorted order.
 
+Space Complexity: O(n) because you don't copy any of the
+items
 ***********************************************************/
-let stack = new Array()
-unsortedStack = [1]
-lastPopped = 2
-// is lastPopped smaller than smallest
-// if so smallest = lastPopped
-// if not then lastPopped goes to secondStack
-smallest = 2
-// num_sorted increments once one stack gets emptied
-num_sorted = 1
-// we only empty until num_sorted items are left, then restart
-// until sorted!
-secondStack = [4, 5, 3]
-let stack_2 = new Array()
+
+
 function sortStack(firstStack) {
   let secondStack = new Array()
-  let length = firstStack.length()
-  let lastPopped = 0
+  let numCount = firstStack.length
   let numSorted = 0
-  // first while loop is for checking when the entire stack
-  // is sorted, and increments numSorted
-  while (numSorted != length) {
-    // second while loop handles moving items from FirstStack
-    // to SecondStack
-    while (numSorted > firstStack.length()) {
-      
-      if(smallest === null) {
-        smallest = firstStack.pop()
-      } else if (firstStack.peek() < smallest) {
-        secondStack.push(smallest)
-        smallest = firstStack.pop()
+  let largest = null
+
+  /* numSorted counts the amount of completed sorted numbers
+  Once numSorted is equal to the length, all numbers have
+  been sorted */
+  while (numSorted < numCount) {
+    /* second while loop handles moving items from 
+    firstStack to secondStack */
+    while (firstStack.length > numSorted) {
+      if (largest === null) {
+        largest = firstStack.pop()
+      } else if (firstStack.slice(-1)[0] > largest) {
+        secondStack.push(largest)
+        largest = firstStack.pop()
       } else {
         secondStack.push(firstStack.pop())
       }
+    }
+    /* Once the first stack is empty, we have found the
+    first largest, so push it to the first position in the
+    first stack */
+    firstStack.push(largest)
+    /* Reset the largest back to null to prepare for the
+    next sorting cycle */
+    largest = null
+    // increment the number of completed sorted numbers
+    numSorted += 1
 
-      
+    /* This will move all the unsorted items back to the 
+    first stack. */
+    while (secondStack.length > 0) {
+      firstStack.push(secondStack.pop())
     }
   }
 
-
-
-
+  return firstStack
 }
 
+console.log(sortStack([1, 5, 3, 2, 5, 6, 7, 4]))
 
 /***********************************************************
 3.6: Animal Shelter - An animal shelter, which holds only
