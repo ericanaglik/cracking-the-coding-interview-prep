@@ -1,3 +1,4 @@
+const Queue = require('./queue')
 /***********************************************************
 3.6: Animal Shelter - An animal shelter, which holds only
 dogs and cats, operates on a strictly "first in, first out"
