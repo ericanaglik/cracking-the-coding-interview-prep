@@ -58,4 +58,9 @@ function sortStack(firstStack) {
   return firstStack
 }
 
-console.log(sortStack([1, 5, 3, 2, 5, 6, 7, 4]))
+// Tests 
+console.log("Problem 3.5 Sort Stack")
+console.log(sortStack([1, 5, 3, 2, 5, 6, 7, 4])) // -> returns [7, 6, 5, 5, 4, 3, 2, 1]
+console.log(sortStack([])) // -> returns []
+console.log(sortStack([3])) // -> returns [3]
+console.log(sortStack([3, 3, 3, 3, 1])) // -> returns [3, 3, 3, 3, 1]
