@@ -166,8 +166,17 @@ may use the built-in LinkedList data structure.
 ***********************************************************/
 
 /******************** BIG O NOTATION ***********************
+enqueue - O(1) because all we do is check the species before
+adding it to the queue
 
+dequeueAny - O(1) because we just compare orderNum's which
+is an O(1) operation once
+
+dequeueDog - O(1) because we just return the oldest dog
+
+dequeueCat - O(1) because we just return the oldest cat
 ***********************************************************/
+
 class AnimalShelter {
   /* Initialize the empty queues for dogs and cats and set
   the order number to 1 */
