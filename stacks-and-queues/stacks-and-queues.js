@@ -1,4 +1,4 @@
-const Deque = require('./deque')
+const Queue = require('./queue')
 /***********************************************************
 3.1: Three in One - Describe how you could use a single
 array to implement three stacks.
@@ -168,3 +168,44 @@ may use the built-in LinkedList data structure.
 /******************** BIG O NOTATION ***********************
 
 ***********************************************************/
+class AnimalShelter {
+  /* Initialize the empty queues for dogs and cats and set
+  the order number to 1 */
+  constructor() {
+    this.dogQueue = Queue()
+    this.catQueue = Queue()
+    this.orderNum = 1
+  }
+  // Check the animals species to decide where to put it
+  enqueue(animal) {
+    /* If its a dog, add it to the dog queue and increment 
+    the order number in preparation of the next animal */
+    if (animal.species === 'dog') {
+      this.dogQueue.enqueue((this.orderNum, animal))
+      this.orderNum++
+    /* Otherwise, its a cat. Add it to the cat queue and 
+    increment the order number in preparation of the next 
+    animal */
+    } else {
+      this.catQueue.enqueue((this.orderNum, animal))
+      this.orderNum++
+    }
+  }
+  /* Compare the oldest cat and dog, and return whichever
+  one was put in the queue first. */
+  dequeueAny() {
+    if (this.dogQueue.peek()[0] < this.catQueue.peek()[0]) {
+      return this.dequeueDog()
+    } else {
+      return this.dequeueCat()
+    }
+  }
+  // Return the oldest dog
+  dequeueDog() {
+    return this.dogQueue.dequeue()
+  }
+  // Return the oldest cat
+  dequeueCat() {
+    return this.catQueue.dequeue()
+  }
+}
