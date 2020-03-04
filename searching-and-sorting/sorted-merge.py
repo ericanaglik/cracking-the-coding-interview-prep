@@ -12,6 +12,14 @@ longest list and you multiply by nm because in order to
 remove an item from the beginning of b and insert it into a,
 you need to shift over both arrays to account for the
 missing/added num.
+************************************************************
+
+***************** HOW TO IMPROVE MY SOLUTION ***************
+Loop over both arrays backwards since even in reverse they
+are in sorted order, that way removing from b is O(1) time
+instead of O(m) because of shifting numbers
+
+The new time complexity would be O(max(n,m) * n)
 *********************************************************'''
 
 def sorted_merge(a, b):
