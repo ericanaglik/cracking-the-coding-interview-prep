@@ -39,7 +39,6 @@ def group_anagrams(words):
 
     return answer
 
-    
 
 # Tests 
 print("Problem 10.2 Group Anagrams")
